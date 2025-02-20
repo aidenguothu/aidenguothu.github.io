@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beijing Kelvin Petroleum Technology Co., Ltd.</title>
-    <link rel="icon" type="image/png" href="./kelvin_logo.png">
     <style>
         :root {
             --morandi-grey: #8C8C8C;
@@ -13,13 +12,99 @@
             --accent-color: #A67C52;
         }
 
-        /* Keep all previous CSS styles from earlier version */
-        /* ... [Paste all CSS from previous answer here] ... */
+        body {
+            font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            color: #4A4A4A;
+            background-color: #F5F3F0;
+        }
+
+        .header {
+            background: var(--morandi-beige);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(140,140,140,0.85), rgba(140,140,140,0.85)), 
+                        url('image/oilfield-bg.jpg') center/cover;
+            color: white;
+            padding: 6rem 1rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--morandi-blue);
+        }
+
+        .clients-section {
+            background: var(--morandi-beige);
+            padding: 3rem 1rem;
+            margin: 4rem 0;
+        }
+
+        .client-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        footer {
+            background: var(--morandi-grey);
+            color: white;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .contact-box {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+            .logo {
+                height: 50px;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="header">
-        <img src="images/kelvin.png" alt="Company Logo" class="logo">
+        <img src="image/kelvin.png" alt="Company Logo" class="logo">
         <nav>
             <a href="#services" style="color: var(--morandi-grey); margin-left: 2rem;">Services</a>
             <a href="#clients" style="color: var(--morandi-grey); margin-left: 2rem;">Clients</a>
@@ -27,8 +112,65 @@
         </nav>
     </header>
 
-    <!-- Keep all HTML content from previous version -->
-    <!-- ... [Paste all HTML sections from previous answer here] ... -->
-    
+    <section class="hero">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Precision Engineering for Upstream Operations</h1>
+            <p style="font-size: 1.2rem;">Serving Global Energy Leaders Since 2005</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="services">
+            <h2 style="color: var(--morandi-blue); border-bottom: 2px solid; padding-bottom: 0.5rem;">Core Services</h2>
+            <div class="services">
+                <div class="service-card">
+                    <h3>Cementing Services</h3>
+                    <p>Comprehensive zonal isolation solutions with advanced cement evaluation technology</p>
+                </div>
+                <div class="service-card">
+                    <h3>Hydraulic Fracturing</h3>
+                    <p>Integrated stimulation services combining reservoir modeling and field execution</p>
+                </div>
+                <div class="service-card">
+                    <h3>Production Optimization</h3>
+                    <p>Artificial lift systems and well performance enhancement solutions</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="clients" class="clients-section">
+            <div class="container">
+                <h2 style="text-align: center; color: var(--morandi-grey);">Trusted By Industry Leaders</h2>
+                <div class="client-logos">
+                    <span style="font-weight: bold; color: var(--morandi-grey);">PetroChina</span>
+                    <span style="font-weight: bold; color: var(--morandi-grey);">SLB</span>
+                    <span style="font-weight: bold; color: var(--morandi-grey);">Halliburton</span>
+                    <span style="font-weight: bold; color: var(--morandi-grey);">CNPC</span>
+                    <span style="font-weight: bold; color: var(--morandi-grey);">Sinopec</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-box">
+            <h2 style="color: var(--morandi-blue); margin-bottom: 1.5rem;">Contact Our Experts</h2>
+            <div style="line-height: 1.8;">
+                <p>D14848, No. 18, Jianshe Road, Kaixuan Street<br>
+                Liangxiang, Fangshan District<br>
+                Beijing, China</p>
+                <p>Tel: +86-137-1640-0984</p>
+                <p>Email: <a href="mailto:support@kelvin-oil.com" style="color: var(--accent-color); text-decoration: none;">support@kelvin-oil.com</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container" style="text-align: center;">
+            <p style="margin-bottom: 1rem;">© 2023 Beijing Kelvin Petroleum Technology Co., Ltd.<br>
+            ISO 9001:2015 Certified | API Q2 Compliant</p>
+            <div style="opacity: 0.8;">
+                <small>Committed to Sustainable Energy Solutions</small>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
