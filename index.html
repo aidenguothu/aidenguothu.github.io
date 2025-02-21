@@ -3,173 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beijing Kelvin Petroleum Technology Co., Ltd.</title>
+    <title>Kelvin Petroleum Technology</title>
     <style>
         :root {
-            --morandi-grey: #8C8C8C;
-            --morandi-beige: #D4C9B8;
-            --morandi-blue: #6B8B9E;
-            --accent-color: #A67C52;
+            --morandi-blue: #5B7C99;
+            --morandi-grey: #A5A5A5;
+            --accent-color: #F4A442;
+            --dark-blue: #1C3B60;
+            --white: #ffffff;
+            --light-bg: #F9F9F9;
         }
 
         body {
-            font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.7;
+            font-family: 'Lato', 'Arial', sans-serif;
             margin: 0;
-            color: #4A4A4A;
-            background-color: #F5F3F0;
+            color: var(--dark-blue);
+            background-color: var(--white);
         }
 
-        .header {
-            background: var(--morandi-beige);
+        header {
+            background: var(--white);
             padding: 1rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
             height: 60px;
-            width: auto;
+        }
+
+        nav a {
+            color: var(--dark-blue);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
         }
 
         .hero {
-            background: linear-gradient(rgba(140,140,140,0.85), rgba(140,140,140,0.85)), 
-                        url('image/offsea_bg.jpg') center/cover;
+            background: linear-gradient(rgba(28,59,96,0.75), rgba(28,59,96,0.75)), 
+                        url('image/oilfield-bg1.jpg') center center/cover;
             color: white;
-            padding: 6rem 1rem;
+            padding: 8rem 1rem;
             text-align: center;
+            position: relative;
+            background-size: cover;
+            animation: bgImageRotation 20s infinite;
+        }
+
+        @keyframes bgImageRotation {
+            0% { background-image: url('image/oilfield-bg1.jpg'); }
+            25% { background-image: url('image/oilfield-bg2.jpg'); }
+            50% { background-image: url('image/oilfield-bg3.jpg'); }
+            75% { background-image: url('image/oilfield-bg4.jpg'); }
+            100% { background-image: url('image/oilfield-bg1.jpg'); }
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 3rem 2rem;
         }
 
-        .services {
+        .info-section {
+            background: var(--light-bg);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin: 4rem 0;
+            padding: 2rem 0;
         }
 
-        .service-card {
-            background: white;
+        .info-box {
+            background: var(--white);
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border-top: 4px solid var(--morandi-blue);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 5px solid var(--morandi-blue);
         }
 
-        .clients-section {
-            background: var(--morandi-beige);
-            padding: 3rem 1rem;
-            margin: 4rem 0;
+        .partners-section {
+            background: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
         }
 
-        .client-logos {
+        .partner-logos {
             display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
             justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            width: 150px;
+            height: 100px;
+            display: flex;
             align-items: center;
-            margin-top: 2rem;
+            justify-content: center;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            background: var(--white);
+            object-fit: contain;
         }
 
         footer {
-            background: var(--morandi-grey);
-            color: white;
-            padding: 3rem 1rem;
-            margin-top: 4rem;
-        }
-
-        .contact-box {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                padding: 1rem;
-            }
-            .logo {
-                height: 50px;
-            }
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <img url="image/kelvin_logo.jpg" alt="Company Logo" class="logo">
+    <header>
+        <img src="image/kelvin_logo.png" alt="Kelvin Petroleum Logo" class="logo">
         <nav>
-            <a href="#services" style="color: var(--morandi-grey); margin-left: 2rem;">Services</a>
-            <a href="#clients" style="color: var(--morandi-grey); margin-left: 2rem;">Clients</a>
-            <a href="#contact" style="color: var(--morandi-grey); margin-left: 2rem;">Contact</a>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Precision Engineering for Upstream Operations</h1>
-            <p style="font-size: 1.2rem;">Serving Global Energy Leaders Since 2005</p>
+            <h1>Advanced Energy Solutions for a Sustainable Future</h1>
+            <p>Innovating Oilfield Technology Since 2019</p>
         </div>
     </section>
 
-    <main class="container">
-        <section id="services">
-            <h2 style="color: var(--morandi-blue); border-bottom: 2px solid; padding-bottom: 0.5rem;">Core Services</h2>
-            <div class="services">
-                <div class="service-card">
-                    <h3>Cementing Services</h3>
-                    <p>Comprehensive zonal isolation solutions with advanced cement evaluation technology</p>
-                </div>
-                <div class="service-card">
-                    <h3>Hydraulic Fracturing</h3>
-                    <p>Integrated stimulation services combining reservoir modeling and field execution</p>
-                </div>
-                <div class="service-card">
-                    <h3>Production Optimization</h3>
-                    <p>Artificial lift systems and well performance enhancement solutions</p>
-                </div>
+    <section class="info-section">
+        <h2>Our Vision, Mission & Values</h2>
+        <div class="info-grid">
+            <div class="info-box">
+                <h3>Vision</h3>
+                <p>Leading the energy transformation with cutting-edge solutions and sustainable practices.</p>
             </div>
-        </section>
+            <div class="info-box">
+                <h3>Mission</h3>
+                <p>Empowering global energy operations through innovation, efficiency, and safety-driven technology.</p>
+            </div>
+            <div class="info-box">
+                <h3>Values</h3>
+                <p>Innovation, Sustainability, Integrity, and Excellence define our path to success.</p>
+            </div>
+        </div>
+    </section>
 
-        <section id="clients" class="clients-section">
-            <div class="container">
-                <h2 style="text-align: center; color: var(--morandi-grey);">Trusted By Industry Leaders</h2>
-                <div class="client-logos">
-                    <span style="font-weight: bold; color: var(--morandi-grey);">PetroChina</span>
-                    <span style="font-weight: bold; color: var(--morandi-grey);">SLB</span>
-                    <span style="font-weight: bold; color: var(--morandi-grey);">Halliburton</span>
-                    <span style="font-weight: bold; color: var(--morandi-grey);">CNPC</span>
-                    <span style="font-weight: bold; color: var(--morandi-grey);">Sinopec</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-box">
-            <h2 style="color: var(--morandi-blue); margin-bottom: 1.5rem;">Contact Our Experts</h2>
-            <div style="line-height: 1.8;">
-                <p>D14848, No. 18, Jianshe Road, Kaixuan Street<br>
-                Liangxiang, Fangshan District<br>
-                Beijing, China</p>
-                <p>Tel: +86-137-1640-0984</p>
-                <p>Email: <a href="mailto:support@kelvin-oil.com" style="color: var(--accent-color); text-decoration: none;">support@kelvin-oil.com</a></p>
-            </div>
-        </section>
-    </main>
+    <section id="clients" class="partners-section">
+        <h2>Our Trusted Partners</h2>
+        <div class="partner-logos">
+            <div class="partner-logo"><img src="image/PetroChina.png" alt="PetroChina"></div>
+            <div class="partner-logo"><img src="image/SinoPEC.png" alt="SinoPEC"></div>
+            <div class="partner-logo"><img src="image/CNOOC.png" alt="CNOOC"></div>
+            <div class="partner-logo"><img src="image/SLB.png" alt="SLB"></div>
+            <div class="partner-logo"><img src="image/Halliburton.png" alt="Halliburton"></div>
+        </div>
+    </section>
 
     <footer>
-        <div class="container" style="text-align: center;">
-            <p style="margin-bottom: 1rem;">© 2023 Beijing Kelvin Petroleum Technology Co., Ltd.<br>
-            ISO 9001:2015 Certified | API Q2 Compliant</p>
-            <div style="opacity: 0.8;">
-                <small>Committed to Sustainable Energy Solutions</small>
-            </div>
+        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <p style="font-size: 1.1rem; font-weight: bold;">Beijing Kelvion Petroleum Technology Co, Ltd.</p>
+            <p style="margin: 5px 0;">Address: D14848, No. 18, Jianshe Road, Kaixuan Street</p>
+            <p style="margin: 5px 0;">Liangxiang, Fangshan District, Beijing, China</p>
+            <p style="margin: 10px 0; font-size: 1rem;">Tel: +86-137-1640-0984 | Email: <a href="mailto:support@kelvin-oil.com" style="color: var(--accent-color); text-decoration: none;">support@kelvin-oil.com</a></p>
+            <p style="margin-top: 15px; font-size: 0.9rem;">© 2025 Kelvin Petroleum Technology</p>
         </div>
     </footer>
 </body>
