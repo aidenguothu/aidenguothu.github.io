@@ -12,19 +12,24 @@
             --dark-blue: #1C3B60;
             --white: #ffffff;
             --light-bg: #F9F9F9;
+            --content-width: min(90%, 1200px);
         }
 
         body {
-            font-family: 'Lato', 'Arial', sans-serif;
+            font-family: 'Lato', system-ui, sans-serif;
             margin: 0;
             color: var(--dark-blue);
             background-color: var(--white);
+            line-height: 1.6;
         }
 
+        /* Responsive Header */
         header {
             background: var(--white);
             padding: 1rem 2rem;
             display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
             align-items: center;
             justify-content: space-between;
             position: sticky;
@@ -34,57 +39,76 @@
         }
 
         .logo {
-            height: 60px;
+            height: clamp(50px, 5vw, 70px);
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         nav a {
             color: var(--dark-blue);
             text-decoration: none;
-            margin-left: 2rem;
             font-weight: 600;
             transition: color 0.3s ease;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            white-space: nowrap;
         }
 
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
+        /* Enhanced Hero Section */
         .hero {
             background: linear-gradient(rgba(28,59,96,0.75), rgba(28,59,96,0.75)), 
-                        url('image/oilfield-bg1.jpg') center center/cover;
+                        url('image/oilfield-bg1.jpg') center/cover;
             color: white;
-            padding: 8rem 1rem;
+            padding: clamp(6rem, 10vw, 8rem) 1rem;
             text-align: center;
-            position: relative;
-            background-size: cover;
-            animation: bgImageRotation 20s infinite;
         }
 
-        @keyframes bgImageRotation {
-            0% { background-image: url('image/oilfield-bg1.jpg'); }
-            25% { background-image: url('image/oilfield-bg2.jpg'); }
-            50% { background-image: url('image/oilfield-bg3.jpg'); }
-            75% { background-image: url('image/oilfield-bg4.jpg'); }
-            100% { background-image: url('image/oilfield-bg1.jpg'); }
+        .hero h1 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
+        /* Professional Vision/Mission Section */
         .info-section {
             background: var(--light-bg);
-            padding: 4rem 2rem;
+            padding: 4rem 0;
+        }
+
+        .info-section h2 {
             text-align: center;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            color: var(--dark-blue);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .info-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-color);
         }
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            padding: 2rem 0;
+            padding: 0 2rem;
+            max-width: var(--content-width);
+            margin: 0 auto;
         }
 
         .info-box {
@@ -94,12 +118,31 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             text-align: center;
             border-top: 5px solid var(--morandi-blue);
+            transition: transform 0.3s ease;
         }
 
+        .info-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-box h3 {
+            font-size: 1.4rem;
+            color: var(--morandi-blue);
+            margin: 1.5rem 0;
+        }
+
+        .info-box p {
+            font-size: 1rem;
+            color: var(--dark-blue);
+            line-height: 1.8;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        /* Enhanced Partner Section */
         .partners-section {
+            padding: 4rem 0;
             background: var(--white);
-            padding: 4rem 2rem;
-            text-align: center;
         }
 
         .partner-logos {
@@ -107,33 +150,80 @@
             justify-content: center;
             gap: 2rem;
             flex-wrap: wrap;
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        .partner-logo {
-            width: 150px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            overflow: hidden;
-            padding: 10px;
-        }
-
-        .partner-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            background: var(--white);
-            object-fit: contain;
-        }
-
+        /* Professional Footer */
         footer {
             background: var(--dark-blue);
             color: var(--white);
-            padding: 3rem 2rem;
+            padding: 3rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 2rem;
             text-align: center;
+        }
+
+        .company-info {
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .company-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+                justify-content: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .info-box {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .info-section {
+                padding: 3rem 0;
+            }
         }
     </style>
 </head>
@@ -143,32 +233,31 @@
         <nav>
             <a href="#about">About Us</a>
             <a href="#services">Services</a>
-            
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>Advanced Energy Solutions for a Sustainable Future</h1>
+            <h1>Advanced Upstream Solutions for Optimal Reservoir Performance</h1>
             <p>Innovating Oilfield Technology Since 2019</p>
         </div>
     </section>
 
     <section class="info-section">
-        <h2>Our Vision, Mission & Values</h2>
+        <h2>Our Strategic Framework</h2>
         <div class="info-grid">
             <div class="info-box">
                 <h3>Vision</h3>
-                <p>Leading the energy transformation with cutting-edge solutions and sustainable practices.</p>
+                <p>To be the preferred partner in upstream optimization through innovative cementing solutions, precision fracturing technologies, and production engineering excellence.</p>
             </div>
             <div class="info-box">
                 <h3>Mission</h3>
-                <p>Empowering global energy operations through innovation, efficiency, and safety-driven technology.</p>
+                <p>Delivering integrated well services that maximize hydrocarbon recovery while ensuring operational safety and environmental stewardship.</p>
             </div>
             <div class="info-box">
                 <h3>Values</h3>
-                <p>Innovation, Sustainability, Integrity, and Excellence define our path to success.</p>
+                <p>Technical Excellence • Operational Integrity • Sustainable Innovation • Client-Centric Solutions</p>
             </div>
         </div>
     </section>
@@ -185,12 +274,19 @@
     </section>
 
     <footer>
-        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <p style="font-size: 0.8rem; font-weight: bold;">Beijing Kelvion Petroleum Technology Co, Ltd.</p>
-            <p style="margin: 5px 0;">Address: D14848, No. 18, Jianshe Road, Kaixuan Street</p>
-            <p style="margin: 5px 0;">Liangxiang, Fangshan District, Beijing, China</p>
-            <p style="margin: 10px 0; font-size: 1rem;">Tel: +86-137-1640-0984 | Email: <a href="mailto:support@kelvin-oil.com" style="color: var(--accent-color); text-decoration: none;">support@kelvin-oil.com</a></p>
-            <p style="margin-top: 15px; font-size: 0.6rem;">© 2025 Kelvin Petroleum Technology</p>
+        <div class="footer-content">
+            <div class="company-info">
+                <div class="company-name">Beijing Kelvion Petroleum Technology Co, Ltd.</div>
+                <div class="contact-info">
+                    <div>D14848, No. 18, Jianshe Road, Kaixuan Street</div>
+                    <div>Liangxiang, Fangshan District, Beijing, China</div>
+                    <div>Tel: +86-137-1640-0984</div>
+                    <div>Email: <a href="mailto:support@kelvin-oil.com">support@kelvin-oil.com</a></div>
+                </div>
+            </div>
+            <div class="legal-info">
+                © 2025 Kelvion Petroleum Technology | ISO 9001:2022 Certified | API Spec Q2 Compliant
+            </div>
         </div>
     </footer>
 </body>
