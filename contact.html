@@ -84,6 +84,11 @@
             text-align: center;
         }
 
+        .contact-container {
+            max-width: 600px;
+            margin: auto;
+        }
+
         .contact-form input, .contact-form textarea {
             width: 100%;
             padding: 1rem;
@@ -189,8 +194,8 @@
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
+                const weatherDiv = document.getElementById('weather');
                 if (data.code === "200") {
-                    const weatherDiv = document.getElementById('weather');
                     data.daily.forEach(day => {
                         const dayDiv = document.createElement('div');
                         dayDiv.className = "weather-card";
@@ -203,10 +208,13 @@
                         weatherDiv.appendChild(dayDiv);
                     });
                 } else {
-                    console.error('Failed to fetch weather data:', data);
+                    weatherDiv.innerHTML = '<p>Failed to fetch weather data.</p>';
                 }
             })
-            .catch(error => console.error('Error fetching weather data:', error));
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+                document.getElementById('weather').innerHTML = '<p>Error loading weather data.</p>';
+            });
     </script>
-</body>
+</body> 
 </html>
