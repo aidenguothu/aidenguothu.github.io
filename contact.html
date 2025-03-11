@@ -84,99 +84,13 @@
             text-align: center;
         }
 
-        .contact-section h2 {
-            font-size: clamp(1.8rem, 3vw, 2.2rem);
-            color: var(--dark-blue);
-            margin-bottom: 2rem;
-        }
-
-        .contact-container {
-            max-width: var(--content-width);
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-
-        .contact-box {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 300px;
-        }
-
-        .contact-box h3 {
-            font-size: 1.4rem;
-            color: var(--morandi-blue);
-            margin-bottom: 1rem;
-        }
-
-        .contact-box p {
-            font-size: 1rem;
-            color: var(--dark-blue);
-            line-height: 1.8;
-        }
-
-        .contact-form {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 3rem auto 0;
-        }
-
-        .contact-form h3 {
-            text-align: center;
-            color: var(--morandi-blue);
-            margin-bottom: 1rem;
-        }
-
-        .contact-form label {
-            font-weight: 600;
-            color: var(--dark-blue);
-            display: block;
-            margin-top: 1rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.8rem;
-            margin-top: 0.5rem;
-            border: 1px solid var(--morandi-grey);
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .contact-form button {
-            background: var(--accent-color);
-            color: var(--white);
-            border: none;
-            padding: 1rem;
-            margin-top: 1.5rem;
-            width: 100%;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .contact-form button:hover {
-            background: #e08a2d;
+        .weather-card {
+            padding: 20px;
+            margin: 10px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         footer {
@@ -185,33 +99,6 @@
             padding: 3rem 0;
             font-size: 0.9rem;
             border-top: 4px solid var(--accent-color);
-        }
-
-        .footer-content {
-            max-width: var(--content-width);
-            margin: 0 auto;
-            padding: 0 2rem;
-            text-align: right;
-        }
-
-        .company-name {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .copyright-section {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            .footer-content {
-                text-align: left;
-            }
         }
     </style>
 </head>
@@ -233,24 +120,8 @@
     </section>
 
     <section class="contact-section">
-        <h2>Get in Touch</h2>
-        <div class="contact-container">
-            <div class="contact-form">
-                <h3>Send Us a Message</h3>
-                <form action="https://formspree.io/f/xldjreag" method="POST">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                    
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </div>
+        <h2>Beijing 7-Day Weather Forecast</h2>
+        <div id="weather"></div>
     </section>
 
     <footer>
@@ -259,5 +130,29 @@
             <div class="copyright-section">© 2025 Kelvin Petroleum Technology</div>
         </div>
     </footer>
+
+    <script>
+        const apiKey = "YOUR_API_KEY";
+        const location = "101010100"; // Beijing's location ID in QWeather
+        const apiUrl = `https://devapi.qweather.com/v7/weather/7d?location=${101010100}&key=${63e0e8472c3748a49c725855bf365bac}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const weatherDiv = document.getElementById('weather');
+                data.daily.forEach(day => {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.className = "weather-card";
+                    dayDiv.innerHTML = `
+                        <h3>${day.fxDate}</h3>
+                        <p>Weather: ${day.textDay}</p>
+                        <p>Temperature: ${day.tempMin}°C - ${day.tempMax}°C</p>
+                        <p>Wind: ${day.windDirDay} ${day.windScaleDay} level</p>
+                    `;
+                    weatherDiv.appendChild(dayDiv);
+                });
+            })
+            .catch(error => console.error('Error fetching weather data:', error));
+    </script>
 </body>
 </html>
