@@ -154,28 +154,7 @@
     </section>
 
     <section class="contact-section">
-        <h2>Get in Touch</h2>
-        <div class="contact-container">
-            <div class="contact-form">
-                <h3>Send Us a Message</h3>
-                <form action="https://formspree.io/f/xldjreag" method="POST">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                    
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact-section">
-        <h2>Beijing 7-Day Weather Forecast</h2>
+        <h2>Beijing Current Weather</h2>
         <div id="weather"></div>
     </section>
 
@@ -187,34 +166,41 @@
     </footer>
 
     <script>
-        const apiKey = "63e0e8472c3748a49c725855bf365bac";
-        const location = "101010100";
-        const apiUrl = `https://devapi.qweather.com/v7/weather/7d?location=${location}&key=${apiKey}`;
+        async function fetchWeather() {
+            const apiKey = '63e0e8472c3748a49c725855bf365bac';
+            const locationId = '101010100';
+            const url = `https://devapi.qweather.com/v7/weather/now?location=${locationId}&key=${apiKey}`;
 
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                const weatherDiv = document.getElementById('weather');
-                if (data.code === "200") {
-                    data.daily.forEach(day => {
-                        const dayDiv = document.createElement('div');
-                        dayDiv.className = "weather-card";
-                        dayDiv.innerHTML = `
-                            <h3>${day.fxDate}</h3>
-                            <p>Weather: ${day.textDay}</p>
-                            <p>Temperature: ${day.tempMin}°C - ${day.tempMax}°C</p>
-                            <p>Wind: ${day.windDirDay} ${day.windScaleDay} level</p>
-                        `;
-                        weatherDiv.appendChild(dayDiv);
-                    });
-                } else {
-                    weatherDiv.innerHTML = '<p>Failed to fetch weather data.</p>';
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
-            })
-            .catch(error => {
+                const data = await response.json();
+                displayWeather(data);
+            } catch (error) {
                 console.error('Error fetching weather data:', error);
-                document.getElementById('weather').innerHTML = '<p>Error loading weather data.</p>';
-            });
+                document.getElementById('weather').innerText = 'Failed to load weather data.';
+            }
+        }
+
+        function displayWeather(data) {
+            if (data && data.now) {
+                const weatherInfo = `
+                    <div class="weather-card">
+                        <p>Temperature: ${data.now.temp}°C</p>
+                        <p>Weather: ${data.now.text}</p>
+                        <p>Wind Direction: ${data.now.windDir}</p>
+                        <p>Wind Speed: ${data.now.windSpeed} km/h</p>
+                    </div>
+                `;
+                document.getElementById('weather').innerHTML = weatherInfo;
+            } else {
+                document.getElementById('weather').innerText = 'No weather data available.';
+            }
+        }
+
+        fetchWeather();
     </script>
 </body> 
 </html>
