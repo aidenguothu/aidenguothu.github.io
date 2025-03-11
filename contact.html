@@ -168,7 +168,6 @@
         <h2>Get in Touch</h2>
         <div class="contact-container">
             <div class="contact-form">
-                <h3>Send Us a Message</h3>
                 <form action="https://formspree.io/f/xldjreag" method="POST">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -198,6 +197,14 @@
     </footer>
 
     <script>
+        const translateText = (text) => {
+            const translations = {
+                '霾': 'Haze',
+                '西南风': 'Southwest Wind'
+            };
+            return translations[text] || text;
+        };
+
         async function fetchWeather() {
             const apiKey = '63e0e8472c3748a49c725855bf365bac';
             const locationId = '101010100';
@@ -220,10 +227,10 @@
             if (data && data.now) {
                 const weatherInfo = `
                     <div class="weather-card">
-                        <h3>Current Weather in Beijing</h3>
+                        <h3>Current Weather</h3>
                         <p>Temperature: ${data.now.temp}°C</p>
-                        <p>Condition: ${data.now.text}</p>
-                        <p>Wind Direction: ${data.now.windDir}</p>
+                        <p>Condition: ${translateText(data.now.text)}</p>
+                        <p>Wind Direction: ${translateText(data.now.windDir)}</p>
                         <p>Wind Speed: ${data.now.windSpeed} km/h</p>
                     </div>
                 `;
