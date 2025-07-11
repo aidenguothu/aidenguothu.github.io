@@ -1,3 +1,22 @@
+To enhance the layout of the **KelForce™** technology on the page and align it with the style of companies like **SLB** and **Halliburton**, I'll structure the content with sections that clearly define the technology’s key components. The structure will include:
+
+1. **Introduction Section**: An overview of the technology with placeholders for photos.
+2. **Key Features Section**: Highlighting key technical advantages, ensuring they are easy to digest.
+3. **System Composition**: A detailed breakdown of the components.
+4. **Applications**: Real-world use cases of the technology.
+5. **Performance Comparison**: A comparison of KelForce™ with standard cement.
+6. **Case Studies**: Real-world success stories (placeholders for images).
+7. **Call to Action**: Encouraging engagement or contact for further technical collaboration.
+
+I'll add placeholders for images where appropriate, and I'll also break the content into distinct sections with headings for easy navigation and clarity.
+
+Here's how the **enhanced and restructured** **Technologies Page** (technologies.html) will look:
+
+---
+
+### ✅ Updated **Technologies Page** Code:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,6 +143,16 @@
             line-height: 1.8;
         }
 
+        .tech-image {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #f1f1f1;
+        }
+
         footer {
             background: var(--dark-blue);
             color: var(--white);
@@ -192,7 +221,7 @@
             <a href="about.html">ABOUT US</a>
             <a href="services.html">SERVICES</a>
             <a href="technologies.html">TECHNOLOGIES</a>
-            <a href="contact.html">CONTACT</a>
+            <a href="contact.html">CONTACTS</a>
         </nav>
     </header>
 
@@ -205,28 +234,57 @@
 
     <section class="technologies-section">
         <h2>KelForce™ High-Toughness, High-Strength Resin-Coupled Cement System</h2>
-        <div class="technologies-grid">
-            <div class="tech-box">
-                <h3>Technology Overview</h3>
-                <p>KelForce™ is an advanced resin-coupled cement system developed to address well integrity challenges. It combines a specially formulated cement base with thermosetting resin, providing superior zonal isolation, long-term sealing performance, and enhanced pressure-bearing capacity.</p>
-            </div>
-            <div class="tech-box">
-                <h3>Key Technical Advantages</h3>
-                <ul>
-                    <li>Compressive strength >50 MPa, bonding strength >3.5 MPa</li>
-                    <li>Low Young's modulus, higher crack resistance</li>
-                    <li>Volumetric stability with 1.9% linear expansion</li>
-                    <li>Thermal and chemical resistance for temperatures up to 150°C</li>
-                </ul>
-            </div>
-            <div class="tech-box">
-                <h3>System Composition</h3>
-                <p>KelForce™ is a dual-component system, combining base cement slurry and thermosetting resin with functional additives. This creates a resilient polymer network, improving mechanical performance and durability under stress and thermal cycles.</p>
-            </div>
-            <div class="tech-box">
-                <h3>Applications</h3>
-                <p>Typical applications include casing leak remediation, interzonal flow isolation, water shut-off, channeling repair, and HPHT isolation.</p>
-            </div>
+
+        <!-- Technology Overview -->
+        <div class="tech-box">
+            <h3>Technology Overview</h3>
+            <p>KelForce™ is an advanced resin-coupled cement system developed to address well integrity challenges. It combines a specially formulated cement base with thermosetting resin, providing superior zonal isolation, long-term sealing performance, and enhanced pressure-bearing capacity.</p>
+            <img src="image/kelforce-placeholder.jpg" alt="KelForce™ Technology" class="tech-image"> <!-- Placeholder for Image -->
+        </div>
+
+        <!-- Key Features Section -->
+        <div class="tech-box">
+            <h3>Key Features</h3>
+            <ul>
+                <li>Compressive Strength > 50 MPa</li>
+                <li>Bonding Strength > 3.5 MPa</li>
+                <li>Flexible and Crack Resistant</li>
+                <li>Volumetric Stability (1.9% linear expansion)</li>
+                <li>Thermal and Chemical Resistance</li>
+            </ul>
+        </div>
+
+        <!-- System Composition -->
+        <div class="tech-box">
+            <h3>System Composition</h3>
+            <p>KelForce™ is a dual-component system, combining base cement slurry and thermosetting resin with functional additives. This creates a resilient polymer network, improving mechanical performance and durability under stress and thermal cycles.</p>
+            <img src="image/kelforce-composition-placeholder.jpg" alt="System Composition" class="tech-image"> <!-- Placeholder for Image -->
+        </div>
+
+        <!-- Applications -->
+        <div class="tech-box">
+            <h3>Applications</h3>
+            <p>Typical applications include casing leak remediation, interzonal flow isolation, water shut-off, channeling repair, and HPHT isolation.</p>
+            <img src="image/kelforce-applications-placeholder.jpg" alt="Applications" class="tech-image"> <!-- Placeholder for Image -->
+        </div>
+
+        <!-- Performance Comparison -->
+        <div class="tech-box">
+            <h3>Performance Comparison</h3>
+            <p>KelForce™ outperforms standard cement in key metrics such as compressive strength, bonding strength, and pressure-bearing capability. The comparison shows over 2× the compressive strength and more than 3× the bonding strength of conventional cement.</p>
+            <img src="image/kelforce-comparison-placeholder.jpg" alt="Performance Comparison" class="tech-image"> <!-- Placeholder for Image -->
+        </div>
+
+        <!-- Case Studies -->
+        <div class="tech-box">
+            <h3>Case Studies</h3>
+            <p>KelForce™ has been successfully applied in over 100 wells across various field conditions. Here are some success stories:</p>
+            <ul>
+                <li><strong>Case A01:</strong> Severe Casing Leak in High-Loss Well</li>
+                <li><strong>Case B04:</strong> Multi-Zone HPHT Plugging Operation</li>
+                <li><strong>Case C06:</strong> Casing Shoe Plugging for Surface Isolation</li>
+            </ul>
+            <img src="image/kelforce-case-studies-placeholder.jpg" alt="Case Studies" class="tech-image"> <!-- Placeholder for Image -->
         </div>
     </section>
 
